@@ -1,0 +1,5 @@
+h3 Welcome To the Demo APP
+- if current_user
+  = link_to 'LogOut', destroy_user_session_path, method: :delete
+- else
+  = link_to 'SignIn', new_user_session_path

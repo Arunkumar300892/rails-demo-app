@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 # devise for user management
 gem 'devise'
 
+# slim for template engine
+gem "slim-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
