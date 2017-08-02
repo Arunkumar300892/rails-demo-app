@@ -3,9 +3,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    build_resource({})
+    self.resource.profile = Profile.new
+    respond_with self.resource
+  end
 
   # POST /resource
   # def create
@@ -36,7 +38,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

@@ -1,0 +1,13 @@
+table.bordered
+  - @user.galleries.each_with_index do |g, i|
+    tr
+      td
+        = g.name
+    tr
+      td
+        - g.images.each_with_index do |i, sl|
+          table
+            - i.avatars.each do |a|
+              tr
+                td
+                  = a.url

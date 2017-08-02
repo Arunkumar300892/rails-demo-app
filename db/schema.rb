@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801162402) do
+ActiveRecord::Schema.define(version: 20170802032905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "galleries", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_galleries_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "gallery_id"
+    t.json "avatars"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_images_on_gallery_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address1"
+    t.string "address2"
+    t.integer "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phone"], name: "index_profiles_on_phone", unique: true
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,4 +63,7 @@ ActiveRecord::Schema.define(version: 20170801162402) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "galleries", "users"
+  add_foreign_key "images", "galleries"
+  add_foreign_key "profiles", "users"
 end

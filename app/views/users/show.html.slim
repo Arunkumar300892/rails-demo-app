@@ -1,0 +1,16 @@
+br
+br
+.name
+  | Name: &nbsp;
+  = @user.name
+.address
+  | Address: &nbsp;
+  = @user.profile.address1
+  = @user.profile.address2
+.phone
+  | Phone: &nbsp;
+  = @user.profile.phone
+
+= render 'add_gallery'
+
+= render 'list_gallery'
