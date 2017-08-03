@@ -62,6 +62,21 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "demo-app_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  # mailer configurations
+  config.action_mailer.default_url_options = { host: ENV['HOST_NAME'] }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['MAILER_USERNAME'],
+    :password => ENV['MAILER_PASSWORD'],
+    :domain => ENV['HOST_NAME'],
+    :address => ENV['SMTP_MAILER'],
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
