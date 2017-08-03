@@ -1,15 +1,19 @@
-.add-gallery-btn.text-center
-  button.btn.btn-info.center data-toggle="collapse" data-target="#demo" Add Gallery
-.collapse id="demo"
-  .add_gallery-form.col-md-offset-2.col-md-10
-    = simple_form_for(@gallery , as: @gallery, url: add_gallery_user_path(@user), html: { class: 'form-horizontal' }) do |f|
-      .col-md-8
-        = f.input :name, label: 'Name', placeholder: 'Type your first name',
-          input_html: { class: 'input-xm chat-input', value: "", }
-      .col-md-8
-        = f.simple_fields_for :image, @gallery.build_image  do |i|
-          = i.input :avatars, as: :file, label: 'Images',
-            input_html: {  multiple: true, class: 'form-control input-xm'}
+ul.collapsible data-collapsible="accordion"
+  li
+    .collapsible-header
+      i.material-icons.left> arrow_downward
+      | Add Gallery
+    .collapsible-body
+      .container.width__40
+        = form_for(@gallery , as: @gallery, url: add_gallery_user_path(@user), html: { id: 'new_gallery', class: 'col s12 new_gallery' }) do |f|
+          .row
+            .signup__fields.input-field.col.s12
+              = f.text_field :name, id: 'galleryName.', class: 'validate'
+              = f.label :name, data: { error: "can't be blank" }
+          .row
+            .input-field.col.s12
+              = f.file_field :images, multiple: true
 
-      .submit-btn.text-left.col-md-8
-        = f.submit 'Create Gallery', class: ' btn btn-primary btn-md'
+          .row
+            .input-field.col.s12
+              = f.submit 'Create Gallery', class: 'btn'

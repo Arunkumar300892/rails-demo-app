@@ -13,6 +13,26 @@
 //= require jquery
 //= require rails-ujs
 //= require jquery.flexslider
-//= require bootstrap
 //= require turbolinks
-//= require_tree .
+//= require materialize/jquery.easing.1.3
+//= require materialize/velocity.min
+//= require materialize/hammer.min
+//= require materialize/jquery.hammer
+//= require materialize/global
+//= require materialize/collapsible
+//= require materialize/dropdown
+//= require materialize/modal
+//= require materialize/tooltip
+//= require materialize/waves
+//= require materialize/sideNav
+//= require materialize/forms
+//= require materialize/toasts
+//= require materialize/tabs
+//= require common
+//= require gallery
+//= require user_validation
+
+// initilization
+$(document).on('turbolinks:load', function() {
+  UserValidation.init();
+});

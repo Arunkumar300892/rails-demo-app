@@ -5,13 +5,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @gallery = @user.galleries.new
+    @images = @gallery.images.new
   end
 
   def add_gallery
     @user = User.find_by(id: params[:id])
-    @user.galleries.new(gallery_params)
+    @gallery = @user.galleries.new(gallery_params)
     if @user.save
-      flash[:notice] = 'Gallery created!'
+      store_avatars
+      flash[:notice] = 'Gallery successfully created!'
       redirect_to user_path(@user)
     else
       redirect_to user_path(@user.errors, alert: 'Something went wrong!')
@@ -25,6 +27,11 @@ class UsersController < ApplicationController
   end
 
   def gallery_params
-    params.require(:gallery).permit(:name, image_attributes: [{ avatars: [] }])
+    params.require(:gallery).permit(:name)
+  end
+
+  def store_avatars
+    images = params[:gallery][:images]
+    images.each{|image| @gallery.images.create(avatar: image)} if images
   end
 end

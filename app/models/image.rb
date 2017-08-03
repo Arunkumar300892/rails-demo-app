@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
 
-  mount_uploaders :avatars, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 
   # Associations
   belongs_to :gallery

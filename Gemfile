@@ -15,10 +15,11 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-sass'
+gem 'materialize-sass'
+gem 'material_icons'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -37,6 +38,7 @@ gem "slim-rails"
 gem 'simple_form'
 
 gem 'carrierwave'
+gem 'cloudinary'
 gem "mini_magick"
 gem 'flexslider-rails'
 
@@ -55,6 +57,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "rails-erd"
+  gem "letter_opener" # to test the emails in dev-env
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802032905) do
+ActiveRecord::Schema.define(version: 20170803223116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170802032905) do
 
   create_table "images", force: :cascade do |t|
     t.bigint "gallery_id"
-    t.json "avatars"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gallery_id"], name: "index_images_on_gallery_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170802032905) do
     t.string "last_name"
     t.string "address1"
     t.string "address2"
-    t.integer "phone"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phone"], name: "index_profiles_on_phone", unique: true

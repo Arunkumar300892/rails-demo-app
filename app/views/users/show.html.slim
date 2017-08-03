@@ -1,36 +1,42 @@
-br
-br
+.container
+  h3 User Info
+  .edit__user-btn.col.s6.push-s6.right-align
+    = link_to edit_user_registration_path, class: 'btn btn-info' do
+      | Edit Details
+      | &nbsp;
+      span
+        i.fa.fa-pencil-square-o
+  .row
+    .col.s12
+      .card-panel
+        table.responsive-table
+          tbody
+            tr
+              td
+                b Name
+              td=@user.name
+            tr
+              td
+                b Email
+              td=@user.email
+            tr
+              td
+                b Address 1
+              td=@user.profile.address1
+            tr
+              td
+                b Address 2
+              td=@user.profile.address2
+            tr
+              td
+                b Phone
+              td=@user.profile.phone
 
-h3 User Info
-.container-fluid.well.col-md-12.user-info
-  .row-fluid
-    .col-md-10
-      h5.name
-        | Name: &nbsp;
-        = @user.name
-      h5.email
-        | Email: &nbsp;
-        = @user.email
-      h5.address1
-        | Address 1: &nbsp;
-        = @user.profile.address1
-      h5.address2
-        | Address 1: &nbsp;
-        = @user.profile.address2
-      h5.phone
-        | Phone: &nbsp;
-        = @user.profile.phone
-
-    .col-md-2
-      .btn-group
-        = link_to edit_user_registration_path, class: 'btn btn-info' do
-          | Edit Details
-          | &nbsp;
-          span
-            i.fa.fa-pencil-square-o
-
-.container-fluid.well.col-md-12.create-gallery
+.divider
+.row
+.container.create-gallery
   = render 'add_gallery'
-
-.container-fluid.well.col-md-12.gallery-list
+.row
+.divider
+.container.gallery-list
   = render 'list_gallery'

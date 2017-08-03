@@ -1,15 +1,20 @@
-- if @user.galleries.select(&:persisted?).present?
-  - @user.galleries.each do |g|
-    .col-md-12
-      .gallery-name
-        h4
-          b=g.name
-      .image-list.flexslider
-        ul.slides
-          - g.image.avatars.each_with_index do |a, count|
-            li
-              = image_tag(a.url(:flex), size: '250x200')
-- else
-  .no-items.text-center
-    h5 
-      b Add Gallery To List Here
+.row
+  - if @user.galleries.select(&:persisted?).present?
+    - @user.galleries.each do |g|
+      .col.s12
+        .gallery-name
+          h4
+            b=g.name
+        .image-list.flexslider
+          - if g.images.present?
+            ul.slides
+              - g.images.select(&:persisted?).each_with_index do |image, count|
+                li
+                  / = image_tag(a.url(:flex), size: '250x200')
+                  = cl_image_tag(image.avatar.url, width: 250, height: 200, crop: :pad)
+      .divider
+  - else
+    .no-items.center-align
+      h5 
+        b Add Gallery To List Here
+    .divider
