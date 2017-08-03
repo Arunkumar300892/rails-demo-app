@@ -1,0 +1,6 @@
+- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+  .etc-login-form
+    p
+      = link_to "forgot your password?", new_password_path(resource_name)
+    p
+      = link_to "new user?", new_user_registration_path

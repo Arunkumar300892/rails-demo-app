@@ -1,0 +1,49 @@
+.back-path
+  = link_to "Back", :back
+
+.container
+  .row
+    .col-md-offset-4.col-md-6
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), input_html: { class: 'form-login'}) do |f|
+        = devise_error_messages!
+        - if resource.new_record?
+          h4 Registration
+        - else
+          h4 Edit Information
+        = f.simple_fields_for :profile, resource.profile do |p|
+          .col-md-6
+            = p.input :first_name, label: 'First Name', input_html: { id: 'firstName',
+              class: 'form-control input-xm chat-input' }, placeholder: 'firstname'
+
+          .col-md-6
+            = p.input :last_name, label: 'Last Name', input_html: { id: 'lastName',
+              class: 'form-control input-xm chat-input' }, placeholder: 'lastname'
+
+        .col-md-12
+          = f.input :username, label: 'User Name', input_html: { id: 'userName',
+            class: 'form-control input-xm chat-input' }, placeholder: 'username'
+
+        .col-md-12
+          = f.input :email, label: 'Email', input_html: { id: 'userEmail',
+            class: 'form-control input-xm chat-input' }, placeholder: 'email'
+        .col-md-6
+          = f.input :password, label: 'Password', input_html: { id: 'userPassword',
+            class: 'form-control input-xm chat-input' }, placeholder: 'password', autocomplete: "off"
+
+        .col-md-6
+          = f.input :password_confirmation, label: 'Confirm Password', input_html: { id: 'userPassword1',
+            class: 'form-control input-xm chat-input' }, placeholder: 're-type password', autocomplete: "off"
+
+        = f.simple_fields_for :profile, resource.profile do |p|
+          .col-md-12
+            = p.input :address1, label: 'Address 1', input_html: { id: 'userAddress1',
+              class: 'form-control input-xm chat-input' }, placeholder: 'Address Line 1'
+          .col-md-12
+            = p.input :address2, label: 'Address 2', input_html: { id: 'userAddress2',
+              class: 'form-control input-xm chat-input' }, placeholder: 'Address Line 2'
+          .col-md-12
+            = p.input :phone, label: 'Phone Number', input_html: { id: 'userPhone',
+              class: 'form-control input-xm chat-input' }, placeholder: 'phone number'
+
+        .submit-btn.text-center
+          = f.submit class: ' btn btn-primary btn-md'

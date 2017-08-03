@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title DemoApp
+    meta name="description" content="UserManagement"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
+  body
+    - if notice
+      alert.alert-success.fade.in data-alert="alert"
+        a.close data-dismiss='alert' href="#" ×
+        p.
+          = notice
+    - if alert
+      alert.alert-error.fade.in data-alert="alert"
+        a.close data-dismiss='alert' href="#" ×
+        p.alert
+          = alert
+
+    h4.pull-right
+      - if user_signed_in?
+        = link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'
+      - else
+        = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+        | &nbsp;
+        = link_to "Login", new_user_session_path, :class => 'navbar-link'
+    br
+
+    = yield

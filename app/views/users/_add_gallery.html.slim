@@ -1,0 +1,15 @@
+.add-gallery-btn.text-center
+  button.btn.btn-info.center data-toggle="collapse" data-target="#demo" Add Gallery
+.collapse id="demo"
+  .add_gallery-form.col-md-offset-2.col-md-10
+    = simple_form_for(@gallery , as: @gallery, url: add_gallery_user_path(@user), html: { class: 'form-horizontal' }) do |f|
+      .col-md-8
+        = f.input :name, label: 'Name', placeholder: 'Type your first name',
+          input_html: { class: 'input-xm chat-input', value: "", }
+      .col-md-8
+        = f.simple_fields_for :image, @gallery.build_image  do |i|
+          = i.input :avatars, as: :file, label: 'Images',
+            input_html: {  multiple: true, class: 'form-control input-xm'}
+
+      .submit-btn.text-left.col-md-8
+        = f.submit 'Create Gallery', class: ' btn btn-primary btn-md'
