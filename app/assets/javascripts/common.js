@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function() {
       Materialize.toast(text, 4000, 'red lighten-2');
     })
   }
-  
+
   // init materialize fields
   Materialize.updateTextFields();
 });

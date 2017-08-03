@@ -3,7 +3,7 @@ var UserValidation = (function(){
   var init = function () {
     var signup_fields = $('.signup__fields');
     var isEmpty = false;
-    $('#new_user').submit(function(){
+    $('#new_user, #new_gallery').submit(function(){
       signup_fields.each(function(i){
         var selector = $(signup_fields[i]);
         var element = selector.find('input');
