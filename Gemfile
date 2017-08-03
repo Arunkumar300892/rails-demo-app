@@ -38,6 +38,7 @@ gem 'simple_form'
 
 gem 'carrierwave'
 gem "mini_magick"
+gem 'flexslider-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

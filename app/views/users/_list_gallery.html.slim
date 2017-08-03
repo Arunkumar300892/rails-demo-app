@@ -1,13 +1,15 @@
-table.bordered
-  - @user.galleries.each_with_index do |g, i|
-    tr
-      td
-        = g.name
-    tr
-      td
-        - g.images.each_with_index do |i, sl|
-          table
-            - i.avatars.each do |a|
-              tr
-                td
-                  = a.url
+- if @user.galleries.select(&:persisted?).present?
+  - @user.galleries.each do |g|
+    .col-md-12
+      .gallery-name
+        h4
+          b=g.name
+      .image-list.flexslider
+        ul.slides
+          - g.image.avatars.each_with_index do |a, count|
+            li
+              = image_tag(a.url(:flex), size: '250x200')
+- else
+  .no-items.text-center
+    h5 
+      b Add Gallery To List Here

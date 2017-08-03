@@ -1,16 +1,36 @@
 br
 br
-.name
-  | Name: &nbsp;
-  = @user.name
-.address
-  | Address: &nbsp;
-  = @user.profile.address1
-  = @user.profile.address2
-.phone
-  | Phone: &nbsp;
-  = @user.profile.phone
 
-= render 'add_gallery'
+h3 User Info
+.container-fluid.well.col-md-12.user-info
+  .row-fluid
+    .col-md-10
+      h5.name
+        | Name: &nbsp;
+        = @user.name
+      h5.email
+        | Email: &nbsp;
+        = @user.email
+      h5.address1
+        | Address 1: &nbsp;
+        = @user.profile.address1
+      h5.address2
+        | Address 1: &nbsp;
+        = @user.profile.address2
+      h5.phone
+        | Phone: &nbsp;
+        = @user.profile.phone
 
-= render 'list_gallery'
+    .col-md-2
+      .btn-group
+        = link_to edit_user_registration_path, class: 'btn btn-info' do
+          | Edit Details
+          | &nbsp;
+          span
+            i.fa.fa-pencil-square-o
+
+.container-fluid.well.col-md-12.create-gallery
+  = render 'add_gallery'
+
+.container-fluid.well.col-md-12.gallery-list
+  = render 'list_gallery'
