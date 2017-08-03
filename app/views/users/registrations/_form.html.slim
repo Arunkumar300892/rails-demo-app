@@ -1,48 +1,56 @@
 .back-path
   = link_to "Back", :back
 
-.container
+.container.width__40
   .row
-    .col-md-offset-4.col-md-6
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), input_html: { class: 'form-login'}) do |f|
-        - if resource.new_record?
-          h4 Registration
-        - else
-          h4 Edit Information
+    = form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: 'col s12 new_user' } do |f|
+      - if resource.new_record?
+        h4 Registration
+      - else
+        h4 Edit Information
+      .row
         = f.simple_fields_for :profile, resource.profile do |p|
-          .col-md-6
-            = p.input :first_name, label: 'First Name', input_html: { id: 'firstName',
-              class: 'form-control input-xm chat-input' }, placeholder: 'firstname'
+          .signup__fields.input-field.col.s6
+            = p.text_field :first_name, id: 'firstName', class: 'validate'
+            = p.label :first_name, data: { error: "can't be blank" }
 
-          .col-md-6
-            = p.input :last_name, label: 'Last Name', input_html: { id: 'lastName',
-              class: 'form-control input-xm chat-input' }, placeholder: 'lastname'
+          .signup__fields.input-field.col.s6
+            = p.text_field :last_name, id: 'lastName', class: 'validate'
+            = p.label :last_name, data: { error: "can't be blank" }
 
-        .col-md-12
-          = f.input :username, label: 'User Name', input_html: { id: 'userName',
-            class: 'form-control input-xm chat-input' }, placeholder: 'username'
+      .row
+        .signup__fields.input-field.col.s12
+          = f.text_field :username, id: 'userName', class: 'validate'
+          = f.label :username, data: { error: "can't be blank" }
 
-        .col-md-12
-          = f.input :email, label: 'Email', input_html: { id: 'userEmail',
-            class: 'form-control input-xm chat-input' }, placeholder: 'email'
-        .col-md-6
-          = f.input :password, label: 'Password', input_html: { id: 'userPassword',
-            class: 'form-control input-xm chat-input' }, placeholder: 'password', autocomplete: "off"
+      .row
+        .signup__fields.input-field.col.s12
+          = f.email_field :email, label: 'Email', id: 'userEmail', class: 'validate'
+          = f.label :email, data: { error: "can't be blank" }
 
-        .col-md-6
-          = f.input :password_confirmation, label: 'Confirm Password', input_html: { id: 'userPassword1',
-            class: 'form-control input-xm chat-input' }, placeholder: 're-type password', autocomplete: "off"
+      .row
+        .signup__fields.input-field.col.s6
+          = f.password_field :password, id: 'userPassword', class: 'validate', autocomplete: "off"
+          = f.label :password, data: { error: "can't be blank" }
 
-        = f.simple_fields_for :profile, resource.profile do |p|
-          .col-md-12
-            = p.input :address1, label: 'Address 1', input_html: { id: 'userAddress1',
-              class: 'form-control input-xm chat-input' }, placeholder: 'Address Line 1'
-          .col-md-12
-            = p.input :address2, label: 'Address 2', input_html: { id: 'userAddress2',
-              class: 'form-control input-xm chat-input' }, placeholder: 'Address Line 2'
-          .col-md-12
-            = p.input :phone, label: 'Phone Number', input_html: { id: 'userPhone',
-              class: 'form-control input-xm chat-input' }, placeholder: 'phone number'
+        .signup__fields.input-field.col.s6
+          = f.password_field :password_confirmation, id: 'userPassword1', class: 'validate', autocomplete: "off"
+          = f.label :password_confirmation, data: { error: "can't be blank" }
 
-        .submit-btn.text-center
-          = f.submit class: ' btn btn-primary btn-md'
+      = f.simple_fields_for :profile, resource.profile do |p|
+        .row
+          .address1.input-field.col.s12
+            = p.text_field :address1, id: 'userAddress1'
+            = p.label :address1, 'Address 1'
+        .row
+          .address2.input-field.col.s12
+            = p.text_field :address2, id: 'userAddress2'
+            = p.label :address2, 'Address 2'
+        .row
+          .signup__fields.input-field.col.s12
+            = p.telephone_field :phone, id: 'userPhone', class: 'validate'
+            = p.label :phone, 'Phone number', data: { error: "can't be blank" }
+      .row
+      .row
+        .submit-btn
+          = f.submit class: 'btn'
