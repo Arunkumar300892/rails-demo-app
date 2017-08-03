@@ -38,6 +38,7 @@ gem "slim-rails"
 gem 'simple_form'
 
 gem 'carrierwave'
+gem 'cloudinary'
 gem "mini_magick"
 gem 'flexslider-rails'
 

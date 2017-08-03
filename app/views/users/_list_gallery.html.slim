@@ -6,11 +6,12 @@
           h4
             b=g.name
         .image-list.flexslider
-          ul.slides
-            - if g.image.present?
-              - g.image.avatars.each_with_index do |a, count|
+          - if g.images.present?
+            ul.slides
+              - g.images.select(&:persisted?).each_with_index do |image, count|
                 li
-                  = image_tag(a.url(:flex), size: '250x200')
+                  / = image_tag(a.url(:flex), size: '250x200')
+                  = cl_image_tag(image.avatar.url, width: 250, height: 200, crop: :pad)
       .divider
   - else
     .no-items.center-align

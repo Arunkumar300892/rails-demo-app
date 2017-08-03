@@ -12,8 +12,7 @@ ul.collapsible data-collapsible="accordion"
               = f.label :name, data: { error: "can't be blank" }
           .row
             .input-field.col.s12
-              = f.simple_fields_for :image, @gallery.build_image  do |i|
-                = i.file_field :avatars, multiple: true
+              = f.file_field :images, multiple: true
 
           .row
             .input-field.col.s12
