@@ -8,6 +8,7 @@
         h4 Registration
       - else
         h4 Edit Information
+      = devise_error_messages!
       .row
         = f.simple_fields_for :profile, resource.profile do |p|
           .signup__fields.input-field.col.s6

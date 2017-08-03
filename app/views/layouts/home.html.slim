@@ -10,15 +10,14 @@ html
 
     meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
   body
-    - if notice
-      alert.alert-success.fade.in data-alert="alert"
-        a.close data-dismiss='alert' href="#" ×
-        p.
+    .container.main-wrapper
+      - if notice
+        span.notice
           = notice
-    - if alert
-      alert.alert-error.fade.in data-alert="alert"
-        a.close data-dismiss='alert' href="#" ×
-        p.alert
+          br
+      - if alert
+        span.alert
           = alert
+          br
 
     = yield

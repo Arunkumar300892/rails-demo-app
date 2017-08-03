@@ -28,11 +28,11 @@
 //= require materialize/forms
 //= require materialize/toasts
 //= require materialize/tabs
+//= require common
 //= require gallery
 //= require user_validation
 
 // initilization
 $(document).on('turbolinks:load', function() {
   UserValidation.init();
-  Materialize.updateTextFields();
 });

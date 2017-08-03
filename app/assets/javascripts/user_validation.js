@@ -12,12 +12,13 @@ var UserValidation = (function(){
           isEmpty = true;
         }
       })
-      if (isEmpty) {
+      if(isEmpty == true) {
+        isEmpty = false;
         return false;
       }
     });
   }
-  
+
   return {
     init: init
   }
