@@ -10,6 +10,19 @@ html
 
     meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
   body
+    nav
+      .nav-wrapper
+        a.brand-logo href="#"  DemoApp
+        ul#nav-mobile.right.hide-on-med-and-down
+          - if user_signed_in?
+            li
+              = link_to "LOGOUT", destroy_user_session_path, method: :delete
+          - else
+            li
+              = link_to "SIGN UP", new_user_registration_path
+            li
+              = link_to "LOGIN", new_user_session_path
+
     .container.main-wrapper
       - if notice
         span.notice.hide
@@ -19,15 +32,5 @@ html
         span.alert.hide
           = alert
           br
-
-    - unless request.url.include?('sign_in') || request.url.include?('sign_up')
-      h4.pull-right
-        - if user_signed_in?
-          = link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'
-        - else
-          = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
-          | &nbsp;
-          = link_to "Login", new_user_session_path, :class => 'navbar-link'
-    br
-
+    .row
     = yield

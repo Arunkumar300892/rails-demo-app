@@ -1,5 +1,3 @@
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
   .col.s6.push-s6.right-align
     = link_to "FORGOT PASSWORD?", new_password_path(resource_name)
-  .col.s6.pull-s6
-    = link_to "SIGN UP", new_user_registration_path
