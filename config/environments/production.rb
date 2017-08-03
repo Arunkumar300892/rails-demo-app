@@ -70,7 +70,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['MAILER_USERNAME'],
     :password => ENV['MAILER_PASSWORD'],
-    :domain => ENV['HOST_NAME'],
+    :domain => ENV['MAILER_DOMAIN'],
     :address => ENV['SMTP_MAILER'],
     :port => 587,
     :authentication => :plain,
