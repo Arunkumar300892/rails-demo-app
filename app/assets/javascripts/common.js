@@ -32,4 +32,8 @@ $(document).on('turbolinks:load', function() {
 
   // init materialize fields
   Materialize.updateTextFields();
+
+  // init materialize navbar
+  $(".button-collapse").sideNav();
+
 });

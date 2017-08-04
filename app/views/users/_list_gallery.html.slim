@@ -1,18 +1,20 @@
 .row
   - if @user.galleries.select(&:persisted?).present?
-    - @user.galleries.each do |g|
+    - @user.galleries.select(&:persisted?).each do |gallery|
       .col.s12
-        .gallery-name
-          h4
-            b=g.name
+        .row.center-align
+          .gallery__name
+            b=gallery.name
+            | &nbsp; &nbsp;
+            = link_to user_gallery_path(@user, gallery), method: :delete, data: { confirm: 'Are you sure you want to delete this quizz ?' }, class: 'red-text' do
+              i.fa.fa-trash-o
         .image-list.flexslider
-          - if g.images.present?
+          - if gallery.images.select(&:persisted?).present?
             ul.slides
-              - g.images.select(&:persisted?).each_with_index do |image, count|
+              - gallery.images.select(&:persisted?).each_with_index do |image, count|
                 li
-                  / = image_tag(a.url(:flex), size: '250x200')
                   = cl_image_tag(image.avatar.url, width: 250, height: 200, crop: :pad)
-      .divider
+      br
   - else
     .no-items.center-align
       h5 
