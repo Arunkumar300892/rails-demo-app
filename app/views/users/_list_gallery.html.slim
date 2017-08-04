@@ -10,7 +10,6 @@
             ul.slides
               - g.images.select(&:persisted?).each_with_index do |image, count|
                 li
-                  / = image_tag(a.url(:flex), size: '250x200')
                   = cl_image_tag(image.avatar.url, width: 250, height: 200, crop: :pad)
       .divider
   - else

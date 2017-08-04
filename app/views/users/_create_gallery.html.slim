@@ -5,7 +5,8 @@ ul.collapsible data-collapsible="accordion"
       | Add Gallery
     .collapsible-body
       .container.width__40
-        = form_for(@gallery , as: @gallery, url: add_gallery_user_path(@user), html: { id: 'new_gallery', class: 'col s12 new_gallery' }) do |f|
+        = form_for(@gallery , as: @gallery, url: user_galleries_path(@user),  method: :post,
+          html: { id: 'new_gallery', class: 'col s12 new_gallery' }) do |f|
           .row
             .signup__fields.input-field.col.s12
               = f.text_field :name, id: 'galleryName.', class: 'validate'
