@@ -2,10 +2,8 @@
   h3 User Info
   .edit__user-btn.col.s6.push-s6.right-align
     = link_to edit_user_registration_path, class: 'btn btn-info' do
-      | Edit Details
-      | &nbsp;
-      span
-        i.fa.fa-pencil-square-o
+      i.fa.fa-pencil-square-o
+      | &nbsp; Edit Details
   .row
     .col.s12
       .card-panel
@@ -33,10 +31,11 @@
               td=@user.profile.phone
 
 .divider
-.row
+br
 .container.create-gallery
-  = render 'add_gallery'
-.row
+  = render 'create_gallery'
+br
 .divider
+br
 .container.gallery-list
   = render 'list_gallery'
