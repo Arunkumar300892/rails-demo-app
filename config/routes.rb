@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
   resources :users, only: [:show] do
-    resources :galleries, only: [:create]
+    resources :galleries, only: [:create, :destroy]
   end
 
   root to: "homes#index"
