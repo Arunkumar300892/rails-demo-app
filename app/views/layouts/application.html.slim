@@ -10,18 +10,7 @@ html
 
     meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
   body
-    nav
-      .nav-wrapper
-        a.brand-logo href="#"  DemoApp
-        ul#nav-mobile.right.hide-on-med-and-down
-          - if user_signed_in?
-            li
-              = link_to "LOGOUT", destroy_user_session_path, method: :delete
-          - else
-            li
-              = link_to "SIGN UP", new_user_registration_path
-            li
-              = link_to "LOGIN", new_user_session_path
+    = render partial: 'layouts/navbar'
 
     .container.main-wrapper
       - if notice

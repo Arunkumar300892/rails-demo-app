@@ -1,0 +1,9 @@
+nav
+  .nav-wrapper
+    a.brand-logo href="#!"  DemoApp
+    a.button-collapse data-activates="mobile-demo" href="#" 
+      i.material-icons menu
+    ul.right.hide-on-med-and-down
+      = render partial: 'layouts/navbar_links'
+    ul#mobile-demo.side-nav
+      = render partial: 'layouts/navbar_links'
