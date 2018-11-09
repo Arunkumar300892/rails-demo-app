@@ -41,6 +41,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem "mini_magick"
 gem 'flexslider-rails'
+gem "loofah", ">= 2.2.3"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
